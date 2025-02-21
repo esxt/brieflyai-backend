@@ -1,14 +1,15 @@
 [phases.setup]
-nixPkgs = ["glibc", "gcc", "python311", "bash", "curl", "python311Packages.pip"]
+nixPkgs = ["glibc", "gcc", "python311", "bash", "curl", "python311Packages.pip", "python311Packages.virtualenv"]
 cmds = [
-    "pip install --upgrade pip setuptools wheel"
+    "python -m venv /app/venv",
+    "/app/venv/bin/pip install --upgrade pip setuptools wheel"
 ]
 
 [phases.build]
 cmds = [
-    "pip install --no-cache-dir -r requirements.txt",
-    "python -m spacy download en_core_web_sm"
+    "/app/venv/bin/pip install --no-cache-dir -r requirements.txt",
+    "/app/venv/bin/python -m spacy download en_core_web_sm"
 ]
 
 [phases.start]
-cmds = ["gunicorn -w 4 -b 0.0.0.0:8080 app:app"]
+cmds = ["/app/venv/bin/gunicorn -w 4 -b 0.0.0.0:8080 app:app"]
