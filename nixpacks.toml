@@ -1,8 +1,7 @@
 [phases.setup]
-nixPkgs = ["glibc", "gcc", "python311", "bash", "curl"]
+nixPkgs = ["glibc", "gcc", "python311", "bash", "curl", "python311Packages.pip"]
 cmds = [
-    "python3 -m ensurepip",
-    "python3 -m pip install --upgrade pip setuptools wheel"
+    "pip install --upgrade pip setuptools wheel"
 ]
 
 [phases.build]
