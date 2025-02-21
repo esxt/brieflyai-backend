@@ -5,10 +5,12 @@ from flask_cors import CORS
 import pdfplumber
 import docx
 import spacy
+import spacy.cli
 
 app = Flask(__name__)
 CORS(app)
 # Load spaCy for text cleaning
+spacy.cli.download("en_core_web_sm")
 nlp = spacy.load("en_core_web_sm")
 
 # OpenAI API Key
