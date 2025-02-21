@@ -1,9 +1,9 @@
 [phases.setup]
 nixPkgs = ["glibc", "gcc", "python311", "bash"]
-cmds = ["python -m pip install --upgrade pip", "python -m spacy download en_core_web_sm"]
+cmds = ["python3 -m ensurepip --upgrade", "python3 -m pip install --upgrade pip"]
 
 [phases.build]
-cmds = ["pip install -r requirements.txt"]
+cmds = ["pip install -r requirements.txt", "python -m spacy download en_core_web_sm"]
 
 [phases.start]
 cmds = ["gunicorn -w 4 -b 0.0.0.0:8080 app:app"]
