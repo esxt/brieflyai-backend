@@ -1,6 +1,6 @@
 [phases.setup]
-nixPkgs = ["glibc", "gcc", "python311", "spacy", "bash"]
-cmds = ["python -m spacy download en_core_web_sm"]
+nixPkgs = ["glibc", "gcc", "python311", "bash"]
+cmds = ["python -m pip install --upgrade pip", "python -m spacy download en_core_web_sm"]
 
 [phases.build]
 cmds = ["pip install -r requirements.txt"]
